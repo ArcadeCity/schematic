@@ -1,7 +1,9 @@
 var fs = require('fs');
 var Schematic = require('../')('1.8');
 
-fs.readFile(__dirname+'/pyramid.schematic', function (err, data) {
+var filePrefix = 'plane'
+
+fs.readFile(__dirname + '/' + filePrefix + '.schematic', function (err, data) {
   if (err) throw err;
 
   Schematic.parse(data, function (err, schem) {
@@ -38,8 +40,10 @@ fs.readFile(__dirname+'/pyramid.schematic', function (err, data) {
 
     // console.log(acobj)
 
-    fs.writeFileSync('./data.json', JSON.stringify(acobj), 'utf-8');
-    let stats = fs.statSync('./data.json')
+
+
+    fs.writeFileSync('./finished/' + filePrefix + '.json', JSON.stringify(acobj), 'utf-8');
+    let stats = fs.statSync('./finished/' + filePrefix + '.json')
     var fileSizeInBytes = stats['size']
     var fileSizeInKB = fileSizeInBytes / 1000
     console.log('Object created. Size: ' + fileSizeInKB + ' KB')
