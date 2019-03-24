@@ -25,6 +25,7 @@
     "doctoc": "0.15.0"
   },
   "scripts": {
-    "test": "node test/test.js"
+    "test": "node test/test.js",
+    "convert": "node test/convert.js"
   }
 }
